@@ -1,0 +1,33 @@
+<%=render "shared/head"%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+        <h3><%=current_user.name%></h3>
+        <p>New Secret</p>
+        <form action="/secrets/<%=current_user.id%>/create" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <textarea class="form_control" name="content" rows="5" cols="30"></textarea>
+            <br>
+            <button class="btn btn-primary">Create Secret</button>
+        </form>
+        <h6>Secrets</h6>
+        <% @secrets.each do |secret| %>
+            <p><%=secret.content%></p>
+            <p class="d-inline-block"><%=secret.likes.length%> likes</p>
+            <form class="d-inline-block" action="/secrets/<%=secret.id%>/<%=current_user.id%>/delete" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="delete">
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        <% end %>
+        <br>
+        <a href="/users/<%=current_user.id%>/edit">Edit</a>
+        <form class="d-inline-block" action="/users/<%=current_user.id%>" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-link" >Delete Account</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

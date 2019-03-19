@@ -1,0 +1,18 @@
+<%= render "shared/head"%>
+<body>
+    <h1>Edit Profile</h1>
+    <form action="/users/<%=@user.id%>/update" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <input type="hidden" name="_method" value="patch">
+        <div class="form_group">
+            <label>Name</label>
+            <input class="form-control" name="name" value="<%=@user.name%>">
+        </div>
+        <div class="form_group">
+            <label>Email</label>
+            <input class="form-control" name="email" value="<%=@user.email%>">
+        </div>
+        <button class="btn btn-primary">Update</button>
+    </form>
+</body>
+</html>

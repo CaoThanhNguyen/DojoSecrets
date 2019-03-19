@@ -1,0 +1,24 @@
+<%= render "shared/head"%>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Log In </h1>
+                <form action="/sessions/create" method="POST">
+                    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                    <div class="form_group">
+                        <label>Email</label>
+                        <input class="form-control" name="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form_group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
